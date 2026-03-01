@@ -3,8 +3,11 @@ from models import User
 
 app = FastAPI()
 
-user = User(name="Alexander Borovskih", id=1)
-
-@app.get("/users")
-def get_user():
-    return user
+@app.post("/user")
+def check_user(user: User):
+    is_adult = user.age >= 18
+    return {
+        "name": user.name,
+        "age": user.age,
+        "is_adult": is_adult
+    }
