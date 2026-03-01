@@ -1,8 +1,7 @@
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
 
 app = FastAPI()
 
-@app.get("/")
-def get_html():
-    return FileResponse("index.html")
+@app.post("/calculate")
+def calculate(num1: int, num2: int):
+    return {"result": num1 + num2}
