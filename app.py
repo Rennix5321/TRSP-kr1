@@ -1,13 +1,11 @@
 from fastapi import FastAPI
-from models import User
+from models import Feedback
 
 app = FastAPI()
 
-@app.post("/user")
-def check_user(user: User):
-    is_adult = user.age >= 18
-    return {
-        "name": user.name,
-        "age": user.age,
-        "is_adult": is_adult
-    }
+feedbacks = []
+
+@app.post("/feedback")
+def create_feedback(feedback: Feedback):
+    feedbacks.append(feedback)
+    return {"message": f"Feedback received. Thank you, {feedback.name}."}
