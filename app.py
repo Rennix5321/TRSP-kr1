@@ -1,7 +1,10 @@
 from fastapi import FastAPI
+from models import User
 
 app = FastAPI()
 
-@app.post("/calculate")
-def calculate(num1: int, num2: int):
-    return {"result": num1 + num2}
+user = User(name="Alexander Borovskih", id=1)
+
+@app.get("/users")
+def get_user():
+    return user
