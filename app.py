@@ -8,4 +8,4 @@ feedbacks = []
 @app.post("/feedback")
 def create_feedback(feedback: Feedback):
     feedbacks.append(feedback)
-    return {"message": f"Feedback received. Thank you, {feedback.name}."}
+    return {"message": f"Спасибо, {feedback.name}! Ваш отзыв сохранён."}
